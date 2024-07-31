@@ -1,0 +1,23 @@
+<div class="flex justify-center  mt-10 ">
+ <div class="block mx-auto">
+    <div class="flex justify-center"> Web3js Angular 18 Solidity Sepolia</div>
+    <div class="mb-10 flex justify-center"> Starter Project</div>
+
+    @if(!loginUser){
+    <button class=" block bg-slate-400 mx-auto w-full " (click)="connect()">Connect wallet</button>
+    }
+    @if(loginUser){
+    <div class="flex flex-col">
+        @if(loginUser){
+        <h1 class="text-xl font-bold mb-4" >{{ addressUser }}</h1>
+        <div class="mx-auto"> Transfer 1 (My token) to smart contract</div>
+        <button class="bg-slate-400" (click)="payTransaction(1000000)">Send  </button>
+        <br/>
+        <div class="mx-auto"> Balance of My Token in the smart contract  :  <span class="font-extrabold">{{contractBalance}} </span> </div>
+        }
+        </div>
+    }
+ </div>
+
+
+</div>
