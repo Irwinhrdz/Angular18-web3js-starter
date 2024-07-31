@@ -32,7 +32,7 @@ Angular 18
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/irwinhrdz/angular18-web3js.git
+   git clone https://github.com/Irwinhrdz/Angular18-web3js-starter.git
    ```
 2. Install NPM packages
    ```sh
