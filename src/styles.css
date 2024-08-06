@@ -1,4 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Avenir";
+  src: url("./assets/fonts/Avenir/AvenirRegular.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "AvenirLight";
+  src: url("./assets/fonts/Avenir/AvenirLight.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "AvenirBlack";
+  src: url("./assets/fonts/Avenir/AvenirBlack.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: "AvenirHeavy";
+  src: url("./assets/fonts/Avenir/AvenirHeavy.ttf");
+  font-display: swap;
+}

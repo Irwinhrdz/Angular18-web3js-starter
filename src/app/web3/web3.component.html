@@ -1,23 +1,57 @@
-<div class="flex justify-center  mt-10 ">
- <div class="block mx-auto">
-    <div class="flex justify-center"> Web3js Angular 18 Solidity Sepolia</div>
-    <div class="mb-10 flex justify-center"> Starter Project</div>
-
-    @if(!loginUser){
-    <button class=" block bg-slate-400 mx-auto w-full " (click)="connect()">Connect wallet</button>
-    }
-    @if(loginUser){
-    <div class="flex flex-col">
+<div class="flex justify-center text-white">
+  <div class="block mx-auto w-screen h-screen">
+    <header
+      class="lg:grid lg:grid-cols-3 flex flex-col justify-between gap-10 py-4 px-20 bg-gradient-to-b from-labPurple to-labPurpleLight w-full items-center"
+    >
+      <img
+        src="https://dummyimage.com/250x80/000/fff"
+        class="grid-cols-1 place-self-center place-items-center"
+      />
+      <div
+        class="text-xl font-AvenirHeavy text-white grid-cols-1 place-self-center place-items-center"
+      >
+        Web3 Angular 18 Solidity Sepolia
+      </div>
+      @if(!loginUser){
+      <button
+        class="block rounded-full px-10 py-3 bg-labGreen font-AvenirHeavy text-xl grid-cols-1 place-self-center place-items-center"
+        (click)="connect()"
+      >
+        Connect wallet
+      </button>
+      } @else {
+      <div class="flex flex-col">
         @if(loginUser){
-        <h1 class="text-xl font-bold mb-4" >{{ addressUser }}</h1>
-        <div class="mx-auto"> Transfer 1 (My token) to smart contract</div>
-        <button class="bg-slate-400" (click)="payTransaction(1000000)">Send  </button>
-        <br/>
-        <div class="mx-auto"> Balance of My Token in the smart contract  :  <span class="font-extrabold">{{contractBalance}} </span> </div>
-        }
+        <div
+          class="flex flex-col justify-center items-center text-white text-2xl grid-cols-1 place-self-center place-items-center"
+        >
+          <span>Welcome</span>
+          <h2 class="font-bold mb-4 text-base">{{ addressUser }}</h2>
         </div>
-    }
- </div>
-
-
+        }
+      </div>
+      }
+    </header>
+    <div class="flex w-full h-full items-center justify-center px-3 overflow-hidden">
+      @if (!loginUser) {
+      <span class="text-3xl font-AvenirHeavy"
+        >Please connect your wallet until continue</span
+      >
+      } @else {
+      <div class="flex flex-col gap-8">
+        <button
+          class="bg-labGreen rounded-xl px-4 py-1.5 text-sm uppercase font-AvenirHeavy max-w-max mx-auto"
+          (click)="payTransaction(1000000)"
+        >
+          Send money
+        </button>
+        <div class="mx-auto">
+          Balance of My Token in the smart contract:
+          <span class="font-AvenirBlack text-sm">{{ contractBalance() }} </span>
+        </div>
+      </div>
+      }
+      <div></div>
+    </div>
+  </div>
 </div>
