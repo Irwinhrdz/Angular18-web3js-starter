@@ -31,14 +31,7 @@ export class web3Component implements OnInit {
 
   payTransaction(amount: number) {
     this.contractServices
-      .payTransaction(amount)
-      .then(() => {
-        console.log("transaction completed");
-        setTimeout(() => {
-          this.getBalance();
-        }, 2000);
-      })
-      .catch((error) => {
+      .payTransaction(amount).catch((error) => {
         console.error("Error:", error);
       });
   }

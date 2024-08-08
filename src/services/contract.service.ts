@@ -98,6 +98,6 @@ export class ContractServices {
     await this.contract.methods.payTransaction(amount, 0, "test message").send({
       from: selectedAddress,
       to: this.contractAddress,
-    });
+    }).then(() => {this.getAmountMytoken();});
   }
 }
