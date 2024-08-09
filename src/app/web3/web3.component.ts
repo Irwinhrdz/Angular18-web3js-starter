@@ -14,8 +14,11 @@ export class web3Component implements OnInit {
   addressUser: string = "";
   addressUserView: boolean = false;
   contractBalance = signal<string>("");
+  previousBalance = signal<string>("");
 
   web3: any;
+
+  loader: boolean = false;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -26,14 +29,19 @@ export class web3Component implements OnInit {
   }
 
   connect() {
-    this.authWeb3Srv.connect();
+    this.loader = true;
+
+    try {
+      this.authWeb3Srv.connect();
+    } catch (error) {}
   }
 
   payTransaction(amount: number) {
-    this.contractServices
-      .payTransaction(amount).catch((error) => {
-        console.error("Error:", error);
-      });
+    this.loader = true;
+    this.contractServices.payTransaction(amount).catch((error) => {
+      console.error("Error:", error);
+      this.loader = false;
+    });
   }
 
   ngOnInit(): void {
@@ -41,7 +49,7 @@ export class web3Component implements OnInit {
       this.loginUser = res;
       !this.loginUser
         ? (this.addressUserView = false)
-        : (this.addressUserView = true);
+        : ((this.addressUserView = true), (this.loader = false));
       this.cdr.detectChanges();
     });
 
@@ -55,7 +63,11 @@ export class web3Component implements OnInit {
   getBalance() {
     this.contractServices.contractBalance.subscribe((res: string) => {
       this.contractBalance.set(res);
-      console.log("balance", res);
+      setTimeout(() => {
+        this.previousBalance.set(res);
+      }, 1000);
+      // console.log("balance", res);
+      this.loader = false;
       this.cdr.detectChanges();
     });
   }

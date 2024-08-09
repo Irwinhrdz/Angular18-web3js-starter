@@ -1,0 +1,5 @@
+.highlight {
+  font-size: 1.05em; /* Aumenta el tamaño del texto */
+  color: #2b1a44;
+  transition: font-size 0.3s ease-in-out, color 0.3s ease-in-out; /* Añade una transición suave */
+}
